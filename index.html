@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سكر ودونات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+        body {
+            background-color: #fcf8f5;
+            color: #4a3525;
+        }
+        header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .cover-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #d63384;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        header h1 {
+            font-size: 2.8rem;
+            color: #d63384;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+        header p {
+            font-size: 1.2rem;
+            color: #6c584c;
+            font-weight: 600;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            margin: 40px 0 20px 0;
+            color: #b56576;
+            font-size: 1.8rem;
+            border-bottom: 2px dashed #fecfef;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .section-container {
+            text-align: center;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(181, 101, 118, 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #f7ede2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b56576;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .card-body {
+            padding: 20px;
+            text-align: center;
+        }
+        .card-title {
+            font-size: 1.4rem;
+            color: #d63384;
+            margin-bottom: 10px;
+        }
+        .card-desc {
+            font-size: 0.95rem;
+            color: #8c7a6b;
+            margin-bottom: 15px;
+        }
+        .price {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #e07a5f;
+            margin-bottom: 20px;
+        }
+        .order-btn {
+            background-color: #d63384;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 0 0 20px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .order-btn:hover {
+            background-color: #ad2865;
+        }
+        .order-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .modal-content h3 {
+            color: #d63384;
+            margin-bottom: 15px;
+        }
+        .modal-content input, .modal-content textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .modal-content button {
+            background: #d63384;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+        .close-modal {
+            background: #ccc !important;
+            margin-right: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #8c7a6b;
+            background: #f4eae1;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="cover-badge">✨ ألذ وأطازج المخبوزات والحلويات ✨</div>
+        <h1>🍩 سكر ودونات 🍩</h1>
+        <p>مصنوعة بحب خصيصاً ليومكم السعيد!</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="section-container">
+            <h2 class="section-title">قطع الدونات الفردية</h2>
+        </div>
+        <div class="menu-grid">
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">🍩 طرف دونات صغير طازج</div>
+                <div class="card-body">
+                    <h3 class="card-title">طرف دونات صغير</h3>
+                    <p class="card-desc">حبة دونات صغيرة طازجة ومزينة بالصوص الشهي.</p>
+                    <div class="price">1 دينار</div>
+                </div>
+                <button class="order-btn" onclick="openOrder('طرف دونات صغير - 1 دينار')">اطلب الآن</button>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">🍩 طرف دونات كبير هش</div>
+                <div class="card-body">
+                    <h3 class="card-title">طرف دونات كبير</h3>
+                    <p class="card-desc">حبة دونات كبيرة هشة ومليئة بالنكهات الرائعة.</p>
+                    <div class="price">3 دينار</div>
+                </div>
+                <button class="order-btn" onclick="openOrder('طرف دونات كبير - 3 دينار')">اطلب الآن</button>
+            </div>
+            
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);">🍫 دونات بحشوة النوتيلا الغنية</div>
+                <div class="card-body">
+                    <h3 class="card-title">طرف دونات محشي شوكولاتة نوتيلا</h3>
+                    <p class="card-desc">دونات طازجة محشوة بغزارة من النوتيلا الغنية مع سكر ناعم.</p>
+                    <div class="price">4 دينار</div>
+                </div>
+                <button class="order-btn" onclick="openOrder('طرف دونات محشي نوتيلا - 4 دينار')">اطلب الآن</button>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">🍓 دونات كيندر الفاخرة</div>
+                <div class="card-body">
+                    <h3 class="card-title">طرف دونات كيندر الفاخر</h3>
+                    <p class="card-desc">دونات مغطاة بشوكلاتة كيندر الأصلية وقطع الشوكلاتة المقرمشة.</p>
+                    <div class="price">5 دينار</div>
+                </div>
+                <button class="order-btn" onclick="openOrder('طرف دونات كيندر - 5 دينار')">اطلب الآن</button>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <h2 class="section-title">بوكسات الدونات الكبيرة والمنوعة</h2>
+        </div>
+        <div class="menu-grid">
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(135deg, #fbc2eb 0%, #a18cd1 100%);">📦 بوكس 3 حبات كبير أنيق</div>
+                <div class="card-body">
+                    <h3 class="card-title">بوكس 3 حبات دونات كبير</h3>
+                    <p class="card-desc">بوكس أنيق يحتوي على 3 قطع دونات كبار بالسكر والقرفة أو الصوصات الفاخرة.</p>
+                    <div class="price">9 دينار</div>
+                </div>
+                <button class="order-btn" onclick="openOrder('بوكس 3 حبات دونات كبير - 9 دينار')">اطلب الآن</button>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);">🎁 بوكس ميني دونات مشكل (12 حبة)</div>
+                <div class="card-body">
+                    <h3 class="card-title">بوكس ميني دونات مشكل (12 حبة)</h3>
+                    <p class="card-desc">تغميسات متنوعة من الصوصات الفاخرة (فراولة، شوكولاتة، كراميل، ورشات ملونة).</p>
+                    <div class="price">15 دينار</div>
+                </div>
+                <button class="order-btn" onclick="openOrder('بوكس ميني دونات مشكل 12 حبة - 15 دينار')">اطلب الآن</button>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);">🍩 بوكس دونات كبير مشكل (متوسط)</div>
+                <div class="card-body">
+                    <h3 class="card-title">بوكس دونات كبير مشكل (متوسط)</h3>
+                    <p class="card-desc">تشكيلة فاخرة من الدونات الكبيرة المزينّة بالشوكلاته، الأوريو والكرز.</p>
+                    <div class="price">18 دينار</div>
+                </div>
+                <button class="order-btn" onclick="openOrder('بوكس دونات كبير مشكل (متوسط) - 18 دينار')">اطلب الآن</button>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(135deg, #8fd3f4 0%, #84fab0 100%);">🌟 بوكس السعادة الكبير الضخم</div>
+                <div class="card-body">
+                    <h3 class="card-title">بوكس السعادة الكبير 🌟</h3>
+                    <p class="card-desc">البوكس الأكبر والأضخم، مليء بتشكيلة واسعة ومبهرة من الدونات الكبيرة والصوصات الخاصة.</p>
+                    <div class="price">35 دينار</div>
+                </div>
+                <button class="order-btn" onclick="openOrder('بوكس السعادة الكبير - 35 دينار')">اطلب الآن</button>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);">💐 بوكس هدايا الدونات والورد</div>
+                <div class="card-body">
+                    <h3 class="card-title">بوكس هدايا الدونات والورد</h3>
+                    <p class="card-desc">تجميعة فاخرة تناسب المناسبات الخاصة، مصممة بطريقة تخطف الأنظار.</p>
+                    <div class="price">40 دينار</div>
+                </div>
+                <button class="order-btn" onclick="openOrder('بوكس هدايا الدونات والورد - 40 دينار')">اطلب الآن</button>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">🎉 بوكس الحفلات السعيد (24 ميني)</div>
+                <div class="card-body">
+                    <h3 class="card-title">بوكس الحفلات السعيد (24 قطعة ميني)</h3>
+                    <p class="card-desc">البوكس المثالي لأعياد الميلاد والتجمعات العائلية الكبيرة.</p>
+                    <div class="price">28 دينار</div>
+                </div>
+                <button class="order-btn" onclick="openOrder('بوكس الحفلات السعيد 24 قطعة - 28 دينار')">اطلب الآن</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="order-modal" id="orderModal">
+        <div class="modal-content">
+            <h3>تأكيد الطلب</h3>
+            <p id="selectedItemText" style="margin-bottom: 15px; font-weight: 600; color: #b56576;"></p>
+            <input type="text" id="custName" placeholder="اسمك الكريم">
+            <input type="tel" id="custPhone" placeholder="رقم هاتفك (مثال: 091xxxxxxx)">
+            <textarea id="custAddress" placeholder="عنوان التوصيل بالتفصيل" rows="3"></textarea>
+            
+            <input type="text" id="storePhone" placeholder="رقم واتساب المتجر (مثال: 218912345678)" style="background-color: #fcf8f5; border: 1px dashed #d63384;">
+            
+            <button onclick="sendOrder()">إرسال الطلب عبر واتساب</button>
+            <button class="close-modal" onclick="closeOrder()">إلغاء</button>
+        </div>
+    </div>
+
+    <footer>
+        جميع الحقوق محفوظة © سكر ودونات
+    </footer>
+
+    <script>
+        let chosenProduct = "";
+
+        function openOrder(productName) {
+            chosenProduct = productName;
+            document.getElementById('selectedItemText').innerText = "المُنتج المُختار: " + productName;
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function closeOrder() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        function sendOrder() {
+            let name = document.getElementById('custName').value;
+            let phone = document.getElementById('custPhone').value;
+            let address = document.getElementById('custAddress').value;
+            let storePhone = document.getElementById('storePhone').value;
+
+            if(!name || !phone || !address || !storePhone) {
+                alert('الرجاء تعبئة جميع الحقول، بما في ذلك رقم هاتف المتجر!');
+                return;
+            }
+
+            let message = `مرحباً، أرغب في طلب:
+*${chosenProduct}*
+
+الاسم: ${name}
+الهاتف: ${phone}
+العنوان: ${address}`;
+            let whatsappUrl = `https://wa.me/${storePhone}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+            closeOrder();
+        }
+    </script>
+</body>
+</html>
